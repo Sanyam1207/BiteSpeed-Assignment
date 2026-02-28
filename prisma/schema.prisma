@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Contact {
+  id             Int            @id @default(autoincrement())
+  phoneNumber    String?
+  email          String?
+  linkedId       Int?
+  linkedContact  Contact?       @relation("ContactLink", fields: [linkedId], references: [id])
+  secondaryLinks Contact[]      @relation("ContactLink")
+  linkPrecedence LinkPrecedence
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  deletedAt      DateTime?
+}
+
+enum LinkPrecedence {
+  primary
+  secondary
+}
