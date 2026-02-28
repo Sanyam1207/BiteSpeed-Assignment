@@ -6,6 +6,7 @@ dotenv.config({
     path: ".././.env",
 });
 console.log(`Connecting to database at ${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}...`);
+
 const adapter = new PrismaMariaDb({
   host: process.env.DATABASE_HOST!,      // ! = assert not undefined
   port: Number(process.env.DATABASE_PORT) || 3306,

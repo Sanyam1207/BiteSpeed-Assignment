@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE `Contact` (
+CREATE TABLE IF NOT EXISTS `Contact` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `phoneNumber` VARCHAR(191) NULL,
     `email` VARCHAR(191) NULL,
